@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 from mailProviders.failsafe_email_provider import FailSafeEmailProvider
 from mailProviders import message
 import logging
+import os
 app = Flask(__name__)
 
 
@@ -17,10 +18,6 @@ def root():
 
 @app.route('/sendMail', methods = ['POST'])
 def send():
-    #1. Validate the contenttype
-    contentType = 'application/json'
-    #if request.mimetype is not contentType:
-        #raise UnsupportedMediaType()
     #2. Get the mail object
     request_json = request.get_json()
     logger.debug('request_json')
@@ -43,4 +40,5 @@ def send():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=7777)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(debug=True, port=port)
