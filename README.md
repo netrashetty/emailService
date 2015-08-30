@@ -1,19 +1,19 @@
-# EmailService
+#EmailService
 
-Problem Statement:
+##Problem Statement
 Create a service that accepts the necessary information and sends emails. It should provide an abstraction between two different email service providers. If one of the services goes down, your service can quickly failover to a different provider without affecting your customers.
 
-Solution:
+##Solution:
 I implemented this using Flask framework. This service acts as a wrapper around mailgun and mandrill mail providers. The failover order for mailproviders
 is MailGun followed by Mandrill.
 
-Exposed API:
-POST /sendMail
+###Exposed API:
+* **POST /sendMail**
 Input request content-type: application/json
-Example:
-Request
-curl -i -H "content-type: application/json" -X POST -d'{"to": "netra.shetty@gmail.com", "from_name": "arunabh", "from_email_id":"arunabh.777@gmail.com", "subject" : "hello"}' "http://localhost:7777/sendMail"
-Response:
+**Example:**
+* Request
+  curl -i -H "content-type: application/json" -X POST -d'{"to": "netra.shetty@gmail.com", "from_name": "arunabh", "from_email_id":"arunabh.777@gmail.com", "subject" : "hello"}' "http://localhost:7777/sendMail"
+* Response:
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 111
@@ -26,13 +26,16 @@ Date: Sun, 30 Aug 2015 13:28:27 GMT
   "provider": "MandrillEmailProvider"
 }
 
-Design:
-I have tried designing the service to allow for seamless onboarding of any new mailprovider. To enable this, i have written an abstract base class for the mail provider which all mailproviders are supposed to implement. I have implemented a message class that will hold all details of the message to send.
+###Design:
+I have tried designing the service to allow for seamless onboarding of any new mailprovider. 
+To enable this, i have written an abstract base class for the mail provider which all mailproviders are supposed to implement. 
+I have implemented a message class that will hold all details of the message to send.
+
 Each MailProvider class can then implement the way to send the message independently. 
 There is a class FailsafeMailProvider that handles the failover logic and calling the mailproviders.
 The main class is EmailService that accepts the incoming request, creates a message object, invokes the FailSafeMailProvider and outputs relevenat response.
 
-Todos:
+###Todos:
 The following are the list of features yet to be implemented:
 1. Ability to send mail to multiple recepients (to/cc/bcc)
 2. Ability to send an attachment in the email
