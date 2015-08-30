@@ -1,1 +1,1 @@
-web: python emailService.py
+web: gunicorn emailService:app
