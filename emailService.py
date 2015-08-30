@@ -11,7 +11,9 @@ ch = logging.StreamHandler()
 ch.setLevel(logging.DEBUG)
 logger.addHandler(ch)
 
-
+@app.route('/', methods = ['GET'])
+def root():
+  return jsonify({'message':'success'}), 200
 
 @app.route('/sendMail', methods = ['POST'])
 def send():
