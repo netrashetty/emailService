@@ -14,7 +14,7 @@ is MailGun followed by Mandrill.
 * Request:
 
 *
-curl -i -H "content-type: application/json" -X POST -d'{"to": "netra.shetty@gmail.com", "from_name": "arunabh", "from_email_id":"arunabh.777@gmail.com", "subject" : "hello"}' "http://localhost:7777/sendMail"
+curl -i -H "content-type: application/json" -X POST -d'{"to": "netra.shetty@gmail.com", "from_name": "netra shetty", "from_email_id":"netra.shetty@inmobi.com", "subject" : "hello"}' "https://tranquil-depths-1507.herokuapp.com/sendMail"
 
 * Response
 *
