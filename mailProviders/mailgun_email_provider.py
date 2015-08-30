@@ -46,4 +46,4 @@ class MailGunEmailProvider():
             logger.error("Encountered error at mailgun server end %s %s", r.status_code, r.json())
             raise ServerException(r.status_code, r.json())
 
-        return r.json['id']
+        return r.json()['id']
