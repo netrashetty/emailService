@@ -11,11 +11,13 @@ is MailGun followed by Mandrill.
 * **POST /sendMail**
 * Input request content-type: application/json
 * **Example:**
-Request
---------
-  curl -i -H "content-type: application/json" -X POST -d'{"to": "netra.shetty@gmail.com", "from_name": "arunabh", "from_email_id":"arunabh.777@gmail.com", "subject" : "hello"}' "http://localhost:7777/sendMail"
-Response
-----------
+* Request:
+
+*
+curl -i -H "content-type: application/json" -X POST -d'{"to": "netra.shetty@gmail.com", "from_name": "arunabh", "from_email_id":"arunabh.777@gmail.com", "subject" : "hello"}' "http://localhost:7777/sendMail"
+
+* Response
+*
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 111
