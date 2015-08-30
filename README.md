@@ -9,11 +9,13 @@ is MailGun followed by Mandrill.
 
 ###Exposed API:
 * **POST /sendMail**
-Input request content-type: application/json
-**Example:**
-* Request
+* Input request content-type: application/json
+* **Example:**
+Request
+--------
   curl -i -H "content-type: application/json" -X POST -d'{"to": "netra.shetty@gmail.com", "from_name": "arunabh", "from_email_id":"arunabh.777@gmail.com", "subject" : "hello"}' "http://localhost:7777/sendMail"
-* Response:
+Response
+----------
 HTTP/1.0 200 OK
 Content-Type: application/json
 Content-Length: 111
@@ -37,6 +39,7 @@ The main class is EmailService that accepts the incoming request, creates a mess
 
 ###Todos:
 The following are the list of features yet to be implemented:
+
 1. Ability to send mail to multiple recepients (to/cc/bcc)
 2. Ability to send an attachment in the email
 3. Case where the email was sent successful but my emailService failed before sending out a response. This would be a tricky case to
